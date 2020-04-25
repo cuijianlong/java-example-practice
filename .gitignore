@@ -1,0 +1,29 @@
+# maven ignore
+target/
+*.zip
+*.tar
+*.txt
+*.tar.gz
+
+# eclipse ignore
+.settings/
+.project
+.classpath
+true
+qtsapitemp/
+# idea ignore
+.idea/
+.mvn
+*.ipr
+*.iml
+*.iws
+
+# subversion
+.svn
+
+# temp ignore
+*.log
+*.cache
+*.diff
+*.patch
+*.tmp
