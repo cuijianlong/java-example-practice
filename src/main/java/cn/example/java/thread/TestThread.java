@@ -1,5 +1,7 @@
 package cn.example.java.thread;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -50,6 +52,11 @@ public class TestThread {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        fun2();
+        //fun2();
+            BigDecimal a = BigDecimal.valueOf(0.23);
+            BigDecimal b = BigDecimal.valueOf(100);
+            BigDecimal c = a.divide(b, 4, BigDecimal.ROUND_HALF_UP);
+            System.out.println(a + "/" + b + " = " + c);
+
     }
 }
