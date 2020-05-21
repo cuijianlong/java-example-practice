@@ -1,5 +1,7 @@
 package cn.example.test;
 
+import cn.example.abs.Persion;
+
 /**
  * Created by IntelliJ IDEA.
  *
@@ -10,4 +12,7 @@ package cn.example.test;
 @FunctionalInterface
 public interface PersonCallback {
     void callback(Person person);
+
+    // 多一个方法也会报错
+    //void callback2(Persion persion);
 }
