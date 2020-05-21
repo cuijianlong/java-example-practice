@@ -1,7 +1,6 @@
 package cn.example.pattern.proxy.dynamic;
 
 import org.junit.Test;
-import sun.tools.jinfo.JInfo;
 
 import java.lang.reflect.Proxy;
 
