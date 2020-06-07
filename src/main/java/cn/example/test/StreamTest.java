@@ -1,9 +1,9 @@
 package cn.example.test;
 
-import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by IntelliJ IDEA.
@@ -100,13 +100,39 @@ public class StreamTest {
 //        System.out.println(Arrays.stream(nums).anyMatch(integer -> integer < 2));
 //        System.out.println(Arrays.stream(nums).noneMatch(integer -> integer < 0));
 
-        Integer[] nums = new Integer[]{1, 2,  3, 4, 5,  6};
+        //Integer[] nums = new Integer[]{1, 2,  3, 4, 5,  6};
         // 每次执行打印结果都不一样
-        Arrays.stream(nums).parallel().forEach(System.out::print);
+        //Arrays.stream(nums).parallel().forEach(System.out::print);
 
-        Arrays.stream(nums).forEach(System.out::print);
-        System.out.println(Arrays.stream(nums).parallel().reduce(Integer::sum).get());
+        //Arrays.stream(nums).forEach(System.out::print);
+        //System.out.println(Arrays.stream(nums).parallel().reduce(Integer::sum).get());
 
+        ExecutorService executorService = Executors.newFixedThreadPool(10);
+        CompletableFuture result = CompletableFuture.supplyAsync(() -> {
+            int sum = 0;
+            System.out.println(Thread.currentThread().getName() + " 开始计算 --- ");
+            for (int i = 0; i < 100; i++) {
+                sum = sum + i;
+            }
+            try {
+                Thread.sleep(TimeUnit.SECONDS.toSeconds(3));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println(Thread.currentThread().getName() + " 计算结束");
+            return sum;
+        }, executorService).thenApplyAsync(sum -> {
+            System.out.println(Thread.currentThread().getName() + " 打印结果: " + sum);
+            return sum;
+        }, executorService);
+        System.out.println("开始做其他的事情----");
+        try {
+            System.out.println("result:" + result.get());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("任务执行完毕");
+        executorService.shutdown();
 
     }
 }
