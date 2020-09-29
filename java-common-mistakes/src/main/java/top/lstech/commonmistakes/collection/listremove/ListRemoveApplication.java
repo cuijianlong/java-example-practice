@@ -12,11 +12,16 @@ public class ListRemoveApplication {
 //        removeByIndex(4);
 //        removeByValue(Integer.valueOf(4));
 
-        forEachRemoveWrong();
+//        forEachRemoveWrong();
         forEachRemoveRight();
-        forEachRemoveRight2();
+//        forEachRemoveRight2();
     }
 
+    /**
+     * 删除下标，并返回其值
+     *
+     * @param index
+     */
     private static void removeByIndex(int index) {
         List<Integer> list =
                 IntStream.rangeClosed(1, 10).boxed().collect(Collectors.toCollection(ArrayList::new));
@@ -24,6 +29,11 @@ public class ListRemoveApplication {
         System.out.println(list);
     }
 
+    /**
+     * 如果值存在，则删除其值
+     *
+     * @param index
+     */
     private static void removeByValue(Integer index) {
         List<Integer> list =
                 IntStream.rangeClosed(1, 10).boxed().collect(Collectors.toCollection(ArrayList::new));
@@ -31,6 +41,9 @@ public class ListRemoveApplication {
         System.out.println(list);
     }
 
+    /**
+     * 错误的删除方式
+     */
     private static void forEachRemoveWrong() {
         List<String> list =
                 IntStream.rangeClosed(1, 10).mapToObj(String::valueOf).collect(Collectors.toCollection(ArrayList::new));
@@ -42,6 +55,9 @@ public class ListRemoveApplication {
         System.out.println(list);
     }
 
+    /**
+     * 通过迭代器的方式删除
+     */
     private static void forEachRemoveRight() {
         List<String> list =
                 IntStream.rangeClosed(1, 10).mapToObj(String::valueOf).collect(Collectors.toCollection(ArrayList::new));
@@ -55,6 +71,9 @@ public class ListRemoveApplication {
 
     }
 
+    /**
+     * 内部也是通过迭代器的方式删除
+     */
     private static void forEachRemoveRight2() {
         List<String> list =
                 IntStream.rangeClosed(1, 10).mapToObj(String::valueOf).collect(Collectors.toCollection(ArrayList::new));

@@ -11,8 +11,8 @@ import java.util.stream.Collectors;
 public class AsListApplication {
 
     public static void main(String[] args) {
-
-        right2();
+        wrong1();
+        //right2();
 
     }
 
