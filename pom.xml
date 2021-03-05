@@ -16,6 +16,7 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>java-base</module>
         <module>design-pattern</module>
         <module>multi-thread</module>
         <module>java8-practice</module>
@@ -30,7 +31,6 @@
         <spring-cloud.version>Greenwich.SR4</spring-cloud.version>
         <spring-data.version>Moore-SR4</spring-data.version>
     </properties>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
