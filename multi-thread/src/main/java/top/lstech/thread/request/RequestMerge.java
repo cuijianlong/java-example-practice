@@ -28,8 +28,10 @@ public class RequestMerge {
 
     private LinkedBlockingQueue<Request> queue = new LinkedBlockingQueue<>();
 
+
     // @PostConstruct
     public void init() {
+        Executors.newSingleThreadScheduledExecutor()
         ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
         executorService.scheduleAtFixedRate(() -> {
             int size = queue.size();
