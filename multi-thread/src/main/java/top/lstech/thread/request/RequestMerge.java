@@ -31,7 +31,6 @@ public class RequestMerge {
 
     // @PostConstruct
     public void init() {
-        Executors.newSingleThreadScheduledExecutor()
         ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
         executorService.scheduleAtFixedRate(() -> {
             int size = queue.size();
